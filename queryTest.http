@@ -1,0 +1,4 @@
+HEAD https://htmlacademy.ru HTTP/1.1
+
+GET https://22.javascript.pages.academy/kekstagram/data HTTP/1.1
+

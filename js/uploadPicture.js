@@ -83,8 +83,7 @@ buttonScaleBigger.addEventListener('click', (evt) => {
   imgUploadPreview.style.transform = 'scale(' + scale / 100 + ')';
 });
 
-
-export { uploadPicture, imgUploadPreview };
+export { uploadPicture};
 
 
 

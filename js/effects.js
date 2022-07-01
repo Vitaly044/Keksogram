@@ -1,4 +1,9 @@
-import { imgUploadPreview } from './uploadPicture.js';
+
+const effectRadioGroup = document.querySelector('.img-upload__effects');
+const effectLevel = document.querySelector('.img-upload__effect-level');
+const effectLevelSlider = document.querySelector('.effect-level__slider');
+const imgUploadPreview = document.querySelector('.img-upload__preview');
+const effectLevelValue = document.querySelector('.effect-level__value');
 
 const effects = {
   none: () => {
@@ -36,7 +41,7 @@ const effects = {
 //Эффекты--------------------------------------------------------------------
 
 //Радиокнопки
-const effectRadioGroup = document.querySelector('.img-upload__effects');
+
 let lastClass = 'effects__preview--none';
 
 const onEffectRadioGroupClick = (evt) => {
@@ -58,9 +63,7 @@ effectRadioGroup.addEventListener('click', onEffectRadioGroupClick);
 
 //слайдер
 //Слайдер
-const effectLevelSlider = document.querySelector('.effect-level__slider');
-const effectLevelValue = document.querySelector('.effect-level__value');
-const effectLevel = document.querySelector('.img-upload__effect-level');
+
 effectLevelValue.value = 75;
 
 noUiSlider.create(effectLevelSlider, {
@@ -82,3 +85,4 @@ effectLevelSlider.noUiSlider.on('update', () => {
 });
 
 export { lastClass, effectLevel };
+

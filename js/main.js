@@ -1,6 +1,7 @@
-//import { photos } from './data.js';
+import './validation.js';
+import '/nouislider/nouislider.js';
+import { uploadPicture } from './uploadPicture.js';
 import { renderPhotos } from './preview.js';
-import {uploadPicture} from './uploadPicture.js';
 
 renderPhotos();
 uploadPicture();
