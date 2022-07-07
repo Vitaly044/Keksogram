@@ -1,4 +1,4 @@
-import { photos } from "./data.js";
+//import { photos } from "./data.js";
 import {showBigPicture} from './viewPhoto.js';
 
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
@@ -20,7 +20,7 @@ const renderPhoto = (picture) => {
   return photoPreview;
 };
 
-const renderPhotos = () => {
+const renderPhotos = (photos) => {
 let pictureListFragment = document.createDocumentFragment();
 //перебираем массив фото объектов
 photos.forEach((photo) => {

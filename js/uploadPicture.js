@@ -1,5 +1,8 @@
+//Модуь редактирования и загрузки картинки на сервер
 import { ifEscPressed } from './util.js';
 import { lastClass, effectLevel } from './effects.js';
+import { request } from './fetch.js';
+import { showError, showSuccess } from './alerts.js';
 
 const Scale = {
   MIN: 25,
@@ -22,7 +25,7 @@ const uploadPicture = () => {
 };
 
 //функция закрытия окна с загружаемым изображением
-const CloseModal = () => {
+const closeModal = () => {
   uploadModal.classList.add('hidden');
   bodyEl.classList.remove('modal-open');
   upload.value = '';  //не работает
@@ -30,12 +33,12 @@ const CloseModal = () => {
 
 //закрыть изображение
 uploadCancel.addEventListener('click', (evt) => {
-  CloseModal();
+  closeModal();
   resetSetting();
 })
 document.addEventListener('keydown', (evt) => {
   if (ifEscPressed(evt)) {
-    CloseModal();
+    closeModal();
     resetSetting();
   }
 });
@@ -83,7 +86,25 @@ buttonScaleBigger.addEventListener('click', (evt) => {
   imgUploadPreview.style.transform = 'scale(' + scale / 100 + ')';
 });
 
-export { uploadPicture};
+uploadPicture();
 
+//Отправка фотки на сервер
 
+const uploadFormPicture = document.querySelector('.img-upload__form');
 
+const onSuccess = () => {
+  showSuccess('Получилось!');
+  closeModal();
+  uploadFormPicture.reset();
+};
+
+const onError = () => {
+  showError('ЧТо-то пошло не так', 'Загрузить другой файл');
+};
+
+uploadFormPicture.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+
+  request(onSuccess, onError, 'POST', new FormData(uploadFormPicture));
+
+});
